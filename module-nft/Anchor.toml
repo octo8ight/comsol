@@ -1,14 +1,11 @@
-[toolchain]
-
 [features]
 seeds = false
 skip-lint = false
-
 [programs.devnet]
-module_nft = "DTng3gN7EWDxYUEjYm4zT67GZUb9dQHWZ68zAia9BqnR"
+nft = "Hh4BCNVtf7kFnPk4xtoeutUQYTVzpjvfMi8EkdBo8ArS"
 
 [registry]
-url = "https://anchor.projectserum.com"
+url = "https://api.apr.dev"
 
 [provider]
 cluster = "devnet"
