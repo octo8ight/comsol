@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-mongoose.Promise = global.Promise
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 const modelSchema = new mongoose.Schema({
     name: String,
@@ -10,12 +10,12 @@ const modelSchema = new mongoose.Schema({
         ref: 'Module'
     }],
     token: String
-})
+});
 
-const modelName = 'User'
+const modelName = 'User';
 
 if(mongoose.connection && mongoose.connection.models[modelName]){
-        module.exports = connection.models[modelName]
+    module.exports = connection.models[modelName];
 }else{
-    module.exports = mongoose.model(modelName, modelSchema)
+    module.exports = mongoose.model(modelName, modelSchema);
 }

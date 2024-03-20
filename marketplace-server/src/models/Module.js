@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise
 
 const moduleSchema = new mongoose.Schema({
     name: String,
-    tokenId: String,
+    // tokenId: String,
     url: String,
     desc: String,
     imgPath: String,
