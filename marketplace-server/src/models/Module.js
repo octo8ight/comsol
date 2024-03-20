@@ -7,7 +7,8 @@ const moduleSchema = new mongoose.Schema({
     url: String,
     desc: String,
     imgPath: String,
-    price: Number
+    price: Number,
+    offer: [String]
 })
 
 const modelName = 'Module'
