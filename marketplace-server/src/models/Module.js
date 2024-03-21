@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-mongoose.Promise = global.Promise
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 const moduleSchema = new mongoose.Schema({
     name: String,
@@ -8,7 +8,22 @@ const moduleSchema = new mongoose.Schema({
     desc: String,
     imgPath: String,
     price: Number,
-    offer: [String]
+    offer: [{
+        user: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Users'
+        },
+        price: Number,
+        Date: {
+            type: Date,
+            default: Date.now()
+        },
+        status: {
+            type: String,
+            enum: ['waiting', 'accept'],
+            default: 'waiting'
+        }
+    }]
 })
 
 const modelName = 'Module'
@@ -16,5 +31,5 @@ const modelName = 'Module'
 if(mongoose.connection && mongoose.connection.models[modelName]){
     module.exports = connection.models[modelName]
 }else{
-    module.exports = mongoose.model(modelName, modelSchema)
+    module.exports = mongoose.model(modelName, moduleSchema)
 }

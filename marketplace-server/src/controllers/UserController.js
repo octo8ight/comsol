@@ -8,38 +8,41 @@ module.exports = {
 
         const user = await User.aggregate([
             {
-                $match: token
+                $match: {token}
             },
             {
                 $unwind: {
-                    path: 'modules',
+                    path: '$modules',
                     preserveNullAndEmptyArrays: true
                 }
             },
             {
                 $lookup: {
-                    from: 'Users',
+                    from: 'modules',
                     localField: 'modules',
                     foreignField: '_id',
                     as: 'modules'
                 }
             },
             {
+                $unwind: {
+                    path: '$modules',
+                    preserveNullAndEmptyArrays: true
+                }
+            },
+            {
                 $group: {
                     _id: '$_id',
-                    info: {
-                        name: '$name',
-                        email: '$email',
-                        token: '$token',
-                        modules: {
-                            $push: '$modules'
-                        }
+                    "name": {$first: '$name'},
+                    "email": {$first: '$email'},
+                    "token": {$first: '$token'},
+                    "modules": {
+                        $push: '$modules'
                     }
                 }
             }
         ]);
-
-        res.json(user[0]);
+        return res.json(user[0]);
     },
     setInfo: async (req, res) => {
         const errors = validationResult(req);
@@ -50,7 +53,6 @@ module.exports = {
         }
 
         const data = matchedData(req);
-        const user = await User.findOne({token: data.token});
 
         let updates = {};
         if (data.name) {
@@ -66,7 +68,7 @@ module.exports = {
             updates.email = data.email;
         }
         if (data.password) {
-            updates.passwordHash = await bcrypt.hash(data.passwordHash, 10);
+            updates.passwordHash = await bcrypt.hash(data.password, 10);
         }
 
         await User.findOneAndUpdate({token: data.token}, {$set: updates});

@@ -36,6 +36,7 @@ module.exports = {
             res.json({error: errors.mapped()});//show errors
             return;
         }//if there is no error
+        const data = matchedData(req);//requesting the bank for validation
         const user = await User.findOne({//verify if email exists
             email: data.email
         });
