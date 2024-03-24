@@ -1,6 +1,6 @@
 # Marketplace-server
 
-It was developed during the NodeJS
+It was developed by express
 
 ## Installation
 
