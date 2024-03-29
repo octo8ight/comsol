@@ -9,6 +9,7 @@ import { AutoConnectProvider, useAutoConnect } from './AutoConnectProvider';
 import { notify } from "../utils/notifications";
 import { NetworkConfigurationProvider, useNetworkConfiguration } from './NetworkConfigurationProvider';
 import dynamic from "next/dynamic";
+// import { MoonPayProvider } from '@moonpay/moonpay-react';
 
 const ReactUIWalletModalProviderDynamic = dynamic(
   async () =>
@@ -41,13 +42,13 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
     return (
         // TODO: updates needed for updating and referencing endpoint: wallet adapter rework
-        <ConnectionProvider endpoint={endpoint}>
-            <WalletProvider wallets={wallets} onError={onError} autoConnect={autoConnect}>
-                <ReactUIWalletModalProviderDynamic>
-                    {children}
-                </ReactUIWalletModalProviderDynamic>
-			</WalletProvider>
-        </ConnectionProvider>
+            <ConnectionProvider endpoint={endpoint}>
+                <WalletProvider wallets={wallets} onError={onError} autoConnect={autoConnect}>
+                    <ReactUIWalletModalProviderDynamic>
+                            {children}
+                    </ReactUIWalletModalProviderDynamic>
+                </WalletProvider>
+            </ConnectionProvider>
     );
 };
 

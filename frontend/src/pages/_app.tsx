@@ -5,7 +5,9 @@ import { ContextProvider } from '../contexts/ContextProvider';
 import { AppBar } from '../components/AppBar';
 import { ContentContainer } from '../components/ContentContainer';
 import { Footer } from '../components/Footer';
-import Notifications from '../components/Notification'
+import Notifications from '../components/Notification';
+import { wrapper } from '../lib/store';
+
 require('@solana/wallet-adapter-react-ui/styles.css');
 require('../styles/globals.css');
 
@@ -13,21 +15,23 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     return (
         <>
           <Head>
-            <title>Solana Scaffold Lite</title>
+            <title>Commune Market</title>
           </Head>
-
-          <ContextProvider>
-            <div className="flex flex-col h-screen">
-              <Notifications />
-              <AppBar/>
-              <ContentContainer>
-                <Component {...pageProps} />
-                <Footer/>
-              </ContentContainer>
-            </div>
-          </ContextProvider>
+{/* 
+          <Provider store={store}> */}
+            <ContextProvider>
+              <div className="flex flex-col">
+                <Notifications />
+                <AppBar/>
+                <ContentContainer>
+                  <Component {...pageProps} />
+                  <Footer/>
+                </ContentContainer>
+              </div>
+            </ContextProvider>
+          {/* </Provider> */}
         </>
     );
 };
 
-export default App;
+export default wrapper.withRedux(App);
