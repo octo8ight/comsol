@@ -7,23 +7,39 @@ const moduleSchema = new mongoose.Schema({
     url: String,
     desc: String,
     imgPath: String,
+    rating: {
+        type: Number,
+        default: 0
+    },
+    review: {
+        type: Number,
+        default: 0
+    },
     price: Number,
     offer: [{
         user: {
             type: mongoose.Schema.ObjectId,
-            ref: 'Users'
+            ref: 'User'
         },
         price: Number,
         Date: {
             type: Date,
             default: Date.now()
         },
+        offer: {
+            type: String,
+            default: ""
+        },
         status: {
             type: String,
-            enum: ['waiting', 'accept'],
+            enum: ['waiting', 'accept', 'reject'],
             default: 'waiting'
         }
-    }]
+    }],
+    Date: {
+        type: Date,
+        default: Date.now()
+    }
 })
 
 const modelName = 'Module'

@@ -3,6 +3,30 @@ const {validationResult, matchedData} = require('express-validator');
 const User = require('../models/User');
 
 module.exports = {
+    sign: async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.json({error: errors.mapped()});
+            return;
+        }
+
+        
+        const data = matchedData(req);
+        const user = await User.findOne({address: data.address});
+        const payload = (Date.now()+ Math.random()).toString();//generating random number and transforming it into a string passing it to payload to transform it into a token
+        const token =  await bcrypt.hash(payload, 10);//encrypt in the payload and storing the token
+        if (!user) {
+            await new User({
+                address: data.address,
+                token: token
+            }).save();
+        }
+        else {
+            user.token = token;
+            await user.save();
+        }
+        res.json(token);
+    },
     signin: async (req, res) =>{
         const errors = validationResult(req);
         if(!errors.isEmpty()){//checking if there is an error in the field or if it is empty through errors

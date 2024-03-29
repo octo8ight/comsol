@@ -2,8 +2,9 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const fileupload = require('express-fileupload')
+// const fileupload = require('express-fileupload')
 const  apiRoutes = require('./src/routes')
+const bodyParser = require('body-parser')
 
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true
@@ -20,9 +21,10 @@ const server = express()
 server.use(cors())
 server.use(express.json())
 server.use(express.urlencoded({extended: true}))
-server.use(fileupload())
+// server.use(fileupload())
+server.use(bodyParser.json())
 
-server.use(express.static(__dirname+'/public'))
+server.use('/public/data/uploads', express.static(__dirname+'/public/data/uploads'))
 server.use('/',apiRoutes)
 server.listen(process.env.PORT, ()=>{
     console.log("server is running at port: "+process.env.PORT)

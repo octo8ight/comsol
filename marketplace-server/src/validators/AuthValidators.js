@@ -1,6 +1,18 @@
 const  {checkSchema} = require('express-validator')
 
 module.exports = {
+    sign: checkSchema({
+        address: {
+            trim: true,
+            notEmpty: true,
+            isLength: {
+                option: {
+                    min: 10
+                },
+                errorMessage: 'public key invalid'
+            }
+        }
+    }),
     signup: checkSchema({//validator signup
         name:{
             trim: true, 
