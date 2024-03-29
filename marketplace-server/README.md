@@ -16,25 +16,12 @@ Install API with npm
 #### Post SignIn
 
 ```http
-  POST /user/signin
+  POST /user/sign
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `email`        | `string` | **Required**. -> is e-mail|
-| `password` | `string` | **Required**. > 2 characters|
-
-#### Post SignUp
-
-```http
-  POST /user/signup
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `name`         | `string` | **Required**. > 2 characters|
-| `email`        | `string` | **Required**. -> is e-mail|
-| `password` | `string` | **Required**. > 2 characters|
+| `address`        | `string` | **Required**. -> is address|
 
 
 #### Get User
@@ -55,9 +42,7 @@ Install API with npm
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `token` | `string` | **Required**|  
-| `name` | `string` | ****|  
-| `email` | `string` | ****|  
-| `password` | `string` | ****|  
+| `address` | `string` | ****|  
 
 #### Get Module List
 ```http
@@ -72,6 +57,8 @@ Install API with npm
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `id` | `string` | **Required**|  
+| `token` | `string` | **Required**|  
+
 
 #### Create List
 ```http
@@ -86,6 +73,8 @@ Install API with npm
 | `desc` | `string` | **Required**|  
 | `imgPath` | `string` | **Required**|  
 | `price` | `number` | **Required**|  
+| `file` | `file` | **Required**|  
+
 
 #### Create Offer
 ```http
@@ -94,8 +83,10 @@ Install API with npm
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
+| `id` | `string` | **Required**|  
 | `token` | `string` | **Required**|  
 | `price` | `number` | **Required**|  
+| `offer` | `string` | **Required**|  
 
 #### Accept Offer
 ```http
