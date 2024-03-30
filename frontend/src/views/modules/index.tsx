@@ -168,7 +168,7 @@ export const ModulesView: FC = ({ }) => {
                   aria-describedby="helper-text-explanation"
                   min={0}
                   value={data.price}
-                  onChange={e => setData({...data, price: e.target.value})}
+                  onChange={e => setData({...data, price: Number(e.target.value)})}
                   placeholder="100 Sol"
                   required
                 />

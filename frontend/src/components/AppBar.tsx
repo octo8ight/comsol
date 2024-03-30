@@ -10,6 +10,8 @@ import { signAction } from '../actions/user.action';
 import { useDispatch } from "react-redux";
 import { setAuthState } from 'lib/authSlice';
 import { UnknownAction } from 'redux';
+import axios from 'axios';
+import { API_URL } from 'utils/constant';
 
 const WalletMultiButtonDynamic = dynamic(
   async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
@@ -25,9 +27,20 @@ export const AppBar: React.FC = () => {
   useEffect(() => {
     if (connected) {
       console.log(publicKey);
-      dispatch(
-        signAction({address: publicKey})
-      );
+      axios.post(`${API_URL}/user/sign`, {address: publicKey})
+        .then(res => {
+          dispatch(
+            setAuthState({
+              auth: true,
+              isAdmin: String(publicKey) === String("4kYZcFZu18uXicMwmqBQ7cxs6SRv3qWQKeYWjVktuuEj") ? true : false,
+              token: res.data
+          })
+          )
+        })
+        .catch(err => console.log(err));
+      // dispatch(
+      //   signAction({address: publicKey})
+      // );
     }
     else {
       dispatch(

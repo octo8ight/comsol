@@ -6,5 +6,5 @@ export type cardPropsType = {
 }
 
 export type detailPropsType = {
-    id: String
+    id: string
 }

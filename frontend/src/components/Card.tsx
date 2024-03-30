@@ -17,7 +17,7 @@ export const Card: React.FC<Props> = ({ card }) => {
                 <img
                     className="rounded-t-lg h-64 w-full"
                     src={API_URL + card.imgPath}
-                    alt=""
+                    alt="image"
                 />
                 <Link href={`/modules/${card._id}`}>
                     <div

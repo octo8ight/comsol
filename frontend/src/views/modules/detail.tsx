@@ -3,14 +3,14 @@ import Link from 'next/link';
 import Modal from 'react-modal';
 import { useSelector } from 'react-redux';
 import {authState} from '../../lib/authSlice';
-import { detailPropsType } from '../../components/web3eventTypes';
+// import { detailPropsType } from '../../components/web3eventTypes';
 import { getModuleDetail, sendModuleOffer, acceptOfferStatus, rejectOfferStatus } from 'actions/module.action';
 import { API_URL, OFFER_STATUS } from 'utils/constant';
 // import { useWallet } from "@solana/wallet-adapter-react";
 import dynamic from 'next/dynamic';
 
 type Props = {
-  id : detailPropsType
+  id : string
 }
 
 export const ModuleDetail: React.FC<Props> = ({id}) => {
@@ -159,7 +159,7 @@ export const ModuleDetail: React.FC<Props> = ({id}) => {
                     defaultCurrencyCode="eth"
                     visible={visible}
                     // onCloseOverlay={() => setVisible(false)}
-                    />
+                />
                 <nav aria-label="Breadcrumb">
                     <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                         <li>
