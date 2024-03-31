@@ -9,6 +9,12 @@ const nextConfig = {
         port: '5000',
         pathname: '/public/data/uploads/**',
       },
+      {
+        protocol: 'http',
+        hostname: '167.88.171.25',
+        port: '5000',
+        pathname: '/public/data/uploads/**',
+      },
     ],
     // domains: [
     //   'http://127.0.0.1:5000'

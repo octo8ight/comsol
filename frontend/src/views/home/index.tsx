@@ -71,9 +71,9 @@ export const HomeView: FC = ({ }) => {
               <SwiperSlide>
                 <Image className='h-full' width={650} height={450} src={API_URL + cardData[7].imgPath} alt="img1" />            
               </SwiperSlide>
-              <SwiperSlide>
+              {/* <SwiperSlide>
                 <Image className='h-full' width={650} height={450} src={API_URL + cardData[8].imgPath} alt="img1" />
-              </SwiperSlide>
+              </SwiperSlide> */}
             </Swiper>
           </div>
         </div>

@@ -1,7 +1,7 @@
 {
-  "name": "solana-dapp-next",
+  "name": "Marketplace",
   "version": "0.2.0",
-  "author": "Solana Maintainers <maintainers@solana.foundation>",
+  "author": "marketplace",
   "license": "MIT",
   "private": false,
   "scripts": {
