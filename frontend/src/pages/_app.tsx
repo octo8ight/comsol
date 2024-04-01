@@ -7,11 +7,13 @@ import { ContentContainer } from '../components/ContentContainer';
 import { Footer } from '../components/Footer';
 import Notifications from '../components/Notification';
 import { wrapper } from '../lib/store';
+import axios from 'axios';
 
 require('@solana/wallet-adapter-react-ui/styles.css');
 require('../styles/globals.css');
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
+  axios.defaults.headers.common['header'] = 'application/json';
     return (
         <>
           <Head>
