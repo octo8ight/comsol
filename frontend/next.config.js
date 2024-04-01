@@ -16,9 +16,6 @@ const nextConfig = {
         pathname: '/public/data/uploads/**',
       },
     ],
-    // domains: [
-    //   'http://127.0.0.1:5000'
-    // ],
     formats: [
       'image/avif', 'image/webp'
     ]
